@@ -7,10 +7,8 @@ import { baseUrl } from "../../../constants/baseUrl";
 const qs = require("qs");
 
 const Index = ({ categoryViseProducts }: any) => {
-  console.log("categories data s", categoryViseProducts);
-
   const router = useRouter();
-  console.log("query is ", router["query"]["categoryName"]);
+
   return (
     <div className="main">
       <Head>
@@ -38,7 +36,7 @@ const Index = ({ categoryViseProducts }: any) => {
 export default Index;
 export async function getStaticPaths() {
   const paths = await getCategoriesNames();
-  console.log("pahs in categries are ", paths);
+
   return {
     paths,
     fallback: false,
@@ -54,7 +52,6 @@ export const getCategoriesNames = async () => {
   return staticPaths;
 };
 export async function getStaticProps({ params }: any) {
-  console.log("parmas in categorrs are ", params["categoryName"]);
   const query = qs.stringify(
     {
       populate: "*",
