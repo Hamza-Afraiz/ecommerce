@@ -5,10 +5,9 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 const { Header, Footer } = Layout;
 
-
 const AppLayout = ({ children }: any) => {
   const router = useRouter();
-  
+
   return (
     <Layout>
       <Header
