@@ -1,14 +1,13 @@
 import axios from "axios";
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
-import type { AppProps } from "next/app";
+//src
 import Category from "../components/Category";
 import Product from "../components/Product";
 import { baseUrl } from "../constants/baseUrl";
+import styles from "../styles/Home.module.css";
+
 const Home: NextPage = ({ categoriesData, productsData }: any) => {
-  console.log("categoriesData are", categoriesData);
   return (
     <div className={styles.container}>
       <Head>
@@ -50,10 +49,8 @@ export async function getStaticProps() {
   const categoriesData = await axios.get(
     `${baseUrl}/api/categories?populate=*`
   );
-  const productsData = await axios.get(
-    `${baseUrl}/api/products?populate=*`
-  );
-  console.log("Data i s", productsData);
+  const productsData = await axios.get(`${baseUrl}/api/products?populate=*`);
+
   // The value of the `categoriesData` key will be
   //  passed to the `Home` component
   return {

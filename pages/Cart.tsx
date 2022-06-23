@@ -3,25 +3,19 @@ import { Button, List } from "antd";
 import "antd/dist/antd.css";
 import axios from "axios";
 import React from "react";
+//src
 import styles from "../styles/Cart.module.css";
 const qs = require("qs");
 import Head from "next/head";
 import { baseUrl } from "../constants/baseUrl";
+
 const Cart = ({ CartData }: any) => {
-  console.log("CARTT ATA ", CartData);
   const [cartData, setCartData] = React.useState(CartData);
-
   const [isCheckout, setIsCheckout] = React.useState<boolean>(false);
-  React.useEffect(() => {
-    debugger;
-  }, [cartData]);
+  React.useEffect(() => {}, [cartData]);
   const removeProduct = async (productId: string | number) => {
-    const CartData2 = await axios.delete(
-      `${baseUrl}/api/carts/${productId}`
-    );
+    const CartData2 = await axios.delete(`${baseUrl}/api/carts/${productId}`);
     setCartData(cartData.filter((product: any) => product.id !== productId));
-
-    debugger;
   };
   return (
     <div className={styles.cartContainer}>
@@ -125,7 +119,7 @@ export async function getStaticProps() {
     }
   );
   const CartData = await axios.get(`${baseUrl}/api/carts?${query}`);
-  console.log("isProductCount Data i s");
+  // console.log("isProductCount Data i s");
   // The value of the `categoriesData` key will be
   //  passed to the `Home` component
   return {

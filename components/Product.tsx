@@ -1,17 +1,13 @@
-import React from "react";
-import "antd/dist/antd.css";
-import {
-  EditOutlined,
-  EllipsisOutlined,
-  SettingOutlined,
-} from "@ant-design/icons";
 import { Avatar, Card } from "antd";
-const { Meta } = Card;
+import "antd/dist/antd.css";
 import Image from "next/image";
-import laptopPic from "../public/laptop.png";
 import Link from "next/link";
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
+//src
 import { baseUrl } from "../constants/baseUrl";
+import laptopPic from "../public/laptop.png";
+const { Meta } = Card;
+
 type ProductType = {
   title: string;
   description: string;
@@ -19,7 +15,7 @@ type ProductType = {
 };
 const Product = ({ title, description,imageUrl }: ProductType) => {
     const router = useRouter()
-    console.log("title is ",title,"from",router.asPath)
+   
   return (
         <Link href={!Object.keys(router?.query).includes("productName")?`${router.asPath}/productName/${title}`:router?.asPath}>
     <Card

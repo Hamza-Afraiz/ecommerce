@@ -6,9 +6,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
+//src
 import { baseUrl } from "../constants/baseUrl";
 import laptopPic from "../public/laptop.png";
 import styles from "../styles/Checkout.module.css";
+
 const { Meta } = Card;
 type ProductType = {
   title: string;
@@ -17,7 +19,6 @@ type ProductType = {
   id: number;
 };
 const CheckoutProduct = ({ title, description, imageUrl, id }: ProductType) => {
-  const [cartCount, setCartCount] = React.useState<number>(0);
   const [isAdded, setIsAdded] = React.useState<boolean>(false);
   const [productCount, setProductCount] = React.useState<number>(0);
   const router = useRouter();

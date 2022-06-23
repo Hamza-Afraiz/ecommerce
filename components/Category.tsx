@@ -1,16 +1,11 @@
-import React from "react";
-import "antd/dist/antd.css";
-import {
-  EditOutlined,
-  EllipsisOutlined,
-  SettingOutlined,
-} from "@ant-design/icons";
 import { Avatar, Card } from "antd";
-const { Meta } = Card;
+import "antd/dist/antd.css";
 import Image from "next/image";
-import laptopPic from "../public/laptop.png";
 import Link from "next/link";
+//src
 import { baseUrl } from "../constants/baseUrl";
+import laptopPic from "../public/laptop.png";
+const { Meta } = Card;
 
 type categoryType = {
   title: string;
@@ -18,7 +13,6 @@ type categoryType = {
   imageUrl?: string | string[];
 };
 const Category = ({ title, description, imageUrl }: categoryType) => {
-  console.log("imageURl is", imageUrl);
   return (
     <Card
       style={{
@@ -26,7 +20,7 @@ const Category = ({ title, description, imageUrl }: categoryType) => {
         margin: 10,
         padding: 10,
         boxShadow: "0 3px 10px rgb(0 0 0 / 0.2)",
-        borderRadius:'12px'
+        borderRadius: "12px",
       }}
       cover={
         <Image

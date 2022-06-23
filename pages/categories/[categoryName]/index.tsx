@@ -1,11 +1,10 @@
-import React from "react";
 import axios from "axios";
-const qs = require("qs");
 import Head from "next/head";
-import Category from "../../../components/Category";
-import Product from "../../../components/Product";
 import { useRouter } from "next/router";
+//src
+import Product from "../../../components/Product";
 import { baseUrl } from "../../../constants/baseUrl";
+const qs = require("qs");
 
 const Index = ({ categoryViseProducts }: any) => {
   console.log("categories data s", categoryViseProducts);

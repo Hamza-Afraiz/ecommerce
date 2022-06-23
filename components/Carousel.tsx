@@ -3,12 +3,11 @@ import "antd/dist/antd.css";
 import styles from "../styles/ProductImagesCarousel.module.css";
 import { Carousel } from "antd";
 import Image from "next/image";
+//src
 import laptopPic from "../public/laptop.png";
 import { baseUrl } from "../constants/baseUrl";
 
 const ProductImagesCarousel = ({ productImages }: any) => {
-  console.log("product images are ", productImages);
-
   return (
     <div className={styles.carouselContainer}>
       {!productImages && (

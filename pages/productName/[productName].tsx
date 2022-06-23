@@ -1,17 +1,18 @@
-import axios from "axios";
-import CheckoutProduct from "../../components/CheckoutProduct";
-import styles from "../../styles/[productName].module.css";
-import React from "react";
-import { Avatar, Comment } from "antd";
+import { Avatar, Comment, Rate } from "antd";
 import "antd/dist/antd.css";
+import axios from "axios";
 import Head from "next/head";
+import React from "react";
+//src
 import ProductImagesCarousel from "../../components/Carousel";
-const qs = require("qs");
-import { Rate } from "antd";
+import CheckoutProduct from "../../components/CheckoutProduct";
 import { baseUrl } from "../../constants/baseUrl";
+import styles from "../../styles/[productName].module.css";
+const qs = require("qs");
+
 export const ProductDetails = ({ ProductData, ReviewData }: any) => {
   const [imagesUrl, setImagesUrl] = React.useState<string[]>([]);
-  console.log("product data nested", ProductData);
+
   const getProductImagesUrl = () => {
     setImagesUrl(
       ProductData?.attributes?.images?.data?.map(
@@ -21,6 +22,7 @@ export const ProductDetails = ({ ProductData, ReviewData }: any) => {
   };
   React.useEffect(() => {
     getProductImagesUrl();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -75,16 +77,13 @@ export async function getStaticPaths() {
 }
 export const getProductNames = async () => {
   const data = await axios.get(`${baseUrl}/api/products`);
-  const categoriesdata = await axios.get(
-    `${baseUrl}/api/categories`
-  );
-  console.log("data is ", data);
+
   const staticPaths = data["data"]["data"]?.map(
     (product: any, index: number) => {
       return { params: { productName: product["attributes"]["name"] } };
     }
   );
-  console.log("Static paths are ", staticPaths);
+
   return staticPaths;
 };
 export const getCategoriesNames = async () => {
@@ -127,7 +126,6 @@ export const getCategoriesNames = async () => {
   return paramsArray;
 };
 export async function getStaticProps({ params }: any) {
-  console.log("parmas are ", params["productName"]);
   const query = qs.stringify(
     {
       populate: "*",
@@ -157,14 +155,10 @@ export async function getStaticProps({ params }: any) {
       encodeValuesOnly: true,
     }
   );
-  const ProductData = await axios.get(
-    `${baseUrl}/api/products?${query}`
-  );
-  const ReviewData = await axios.get(
-    `${baseUrl}/api/reviews?${reviewQuery}`
-  );
+  const ProductData = await axios.get(`${baseUrl}/api/products?${query}`);
+  const ReviewData = await axios.get(`${baseUrl}/api/reviews?${reviewQuery}`);
   // console.log("product data is ,", ProductData["data"]["data"][0]);
-  console.log("Review data is ,", ReviewData["data"]["data"]);
+  // console.log("Review data is ,", ReviewData["data"]["data"]);
   return {
     props: {
       ProductData: ProductData["data"]["data"][0],

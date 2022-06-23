@@ -1,15 +1,14 @@
-import React, { ReactElement, ReactNode } from "react";
-import { Layout, Menu } from "antd";
-import "antd/dist/antd.css";
-import type { AppProps } from "next/app";
-import { Breadcrumb } from "antd";
-const { Header, Footer } = Layout;
-import { useRouter } from "next/router";
 import { HomeOutlined, ShoppingCartOutlined } from "@ant-design/icons";
+import { Breadcrumb, Layout } from "antd";
+import "antd/dist/antd.css";
 import Link from "next/link";
+import { useRouter } from "next/router";
+const { Header, Footer } = Layout;
+
+
 const AppLayout = ({ children }: any) => {
   const router = useRouter();
-  console.log("router inn app is ", router);
+  
   return (
     <Layout>
       <Header
