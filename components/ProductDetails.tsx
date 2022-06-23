@@ -10,14 +10,14 @@ const { Meta } = Card;
 import Image from "next/image";
 import laptopPic from "../public/laptop.png";
 import Link from "next/link";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 type ProductType = {
   title: string;
   description: string;
 };
 const ProductDetails = ({ title, description }: ProductType) => {
-    const router = useRouter()
-    console.log("title is ",title,"from",router.asPath)
+  const router = useRouter();
+  console.log("title is ", title, "from", router.asPath);
   return (
     <Card
       style={{

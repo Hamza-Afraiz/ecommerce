@@ -6,6 +6,7 @@ import React from "react";
 import styles from "../styles/Cart.module.css";
 const qs = require("qs");
 import Head from "next/head";
+import { baseUrl } from "../constants/baseUrl";
 const Cart = ({ CartData }: any) => {
   console.log("CARTT ATA ", CartData);
   const [cartData, setCartData] = React.useState(CartData);
@@ -16,7 +17,7 @@ const Cart = ({ CartData }: any) => {
   }, [cartData]);
   const removeProduct = async (productId: string | number) => {
     const CartData2 = await axios.delete(
-      `http://localhost:1337/api/carts/${productId}`
+      `${baseUrl}/api/carts/${productId}`
     );
     setCartData(cartData.filter((product: any) => product.id !== productId));
 
@@ -46,7 +47,7 @@ const Cart = ({ CartData }: any) => {
                 width={100}
                 height={100}
                 alt="logo"
-                src={`http://localhost:1337${item?.attributes?.product?.data?.attributes?.image?.data?.attributes?.url}`}
+                src={`${baseUrl}${item?.attributes?.product?.data?.attributes?.image?.data?.attributes?.url}`}
               />
             }
           >
@@ -123,7 +124,7 @@ export async function getStaticProps() {
       encodeValuesOnly: true,
     }
   );
-  const CartData = await axios.get(`http://localhost:1337/api/carts?${query}`);
+  const CartData = await axios.get(`${baseUrl}/api/carts?${query}`);
   console.log("isProductCount Data i s");
   // The value of the `categoriesData` key will be
   //  passed to the `Home` component

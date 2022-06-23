@@ -8,6 +8,7 @@ import "antd/dist/antd.css";
 import ProductImagesCarousel from "../../../../components/Carousel";
 const qs = require("qs");
 import { Rate } from "antd";
+import { baseUrl } from "../../../../constants/baseUrl";
 export const ProductDetails = ({ ProductData, ReviewData }: any) => {
   const [imagesUrl, setImagesUrl] = React.useState<string[]>([]);
 
@@ -88,7 +89,7 @@ export async function getStaticPaths() {
 //   return staticPaths;
 // };
 export const getCategoriesNames = async () => {
-  const data = await axios.get("http://localhost:1337/api/categories");
+  const data = await axios.get(`${baseUrl}/api/categories`);
   const categoriesData = data["data"]["data"];
   let paramsArray: any = [];
   for (let i = 0; i < categoriesData?.length; i++) {
@@ -110,7 +111,7 @@ export const getCategoriesNames = async () => {
       }
     );
     const categoryViseProducts = await axios.get(
-      `http://localhost:1337/api/products?${query}`
+      `${baseUrl}/api/products?${query}`
     );
     const params = categoryViseProducts["data"]["data"]?.map((product: any) => {
       paramsArray.push({
@@ -157,12 +158,8 @@ export async function getStaticProps({ params }: any) {
       encodeValuesOnly: true,
     }
   );
-  const ProductData = await axios.get(
-    `http://localhost:1337/api/products?${query}`
-  );
-  const ReviewData = await axios.get(
-    `http://localhost:1337/api/reviews?${reviewQuery}`
-  );
+  const ProductData = await axios.get(`${baseUrl}/api/products?${query}`);
+  const ReviewData = await axios.get(`${baseUrl}/api/reviews?${reviewQuery}`);
   // console.log("product data is ,", ProductData["data"]["data"][0]);
   console.log("Review data is ,", ReviewData["data"]["data"]);
   return {

@@ -10,6 +10,7 @@ const { Meta } = Card;
 import Image from "next/image";
 import laptopPic from "../public/laptop.png";
 import Link from "next/link";
+import { baseUrl } from "../constants/baseUrl";
 
 type categoryType = {
   title: string;
@@ -30,7 +31,7 @@ const Category = ({ title, description, imageUrl }: categoryType) => {
       cover={
         <Image
           alt="example"
-          src={imageUrl ? `http://localhost:1337${imageUrl}` : laptopPic}
+          src={imageUrl ? `${baseUrl}${imageUrl}` : laptopPic}
           width={300}
           height={200}
         />

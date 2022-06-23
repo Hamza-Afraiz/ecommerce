@@ -5,6 +5,7 @@ import Head from "next/head";
 import Category from "../../../components/Category";
 import Product from "../../../components/Product";
 import { useRouter } from "next/router";
+import { baseUrl } from "../../../constants/baseUrl";
 
 const Index = ({ categoryViseProducts }: any) => {
   console.log("categories data s", categoryViseProducts);
@@ -45,7 +46,7 @@ export async function getStaticPaths() {
   };
 }
 export const getCategoriesNames = async () => {
-  const data = await axios.get("http://localhost:1337/api/categories");
+  const data = await axios.get(`${baseUrl}/api/categories`);
 
   const staticPaths = data["data"]["data"]?.map((product: any) => {
     return { params: { categoryName: product["attributes"]["name"] } };
@@ -72,7 +73,7 @@ export async function getStaticProps({ params }: any) {
     }
   );
   const categoryViseProducts = await axios.get(
-    `http://localhost:1337/api/products?${query}`
+    `${baseUrl}/api/products?${query}`
   );
 
   return {

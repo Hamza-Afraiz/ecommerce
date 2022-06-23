@@ -8,6 +8,7 @@ import Head from "next/head";
 import ProductImagesCarousel from "../../components/Carousel";
 const qs = require("qs");
 import { Rate } from "antd";
+import { baseUrl } from "../../constants/baseUrl";
 export const ProductDetails = ({ ProductData, ReviewData }: any) => {
   const [imagesUrl, setImagesUrl] = React.useState<string[]>([]);
   console.log("product data nested", ProductData);
@@ -73,9 +74,9 @@ export async function getStaticPaths() {
   };
 }
 export const getProductNames = async () => {
-  const data = await axios.get("http://localhost:1337/api/products");
+  const data = await axios.get(`${baseUrl}/api/products`);
   const categoriesdata = await axios.get(
-    "http://localhost:1337/api/categories"
+    `${baseUrl}/api/categories`
   );
   console.log("data is ", data);
   const staticPaths = data["data"]["data"]?.map(
@@ -87,7 +88,7 @@ export const getProductNames = async () => {
   return staticPaths;
 };
 export const getCategoriesNames = async () => {
-  const data = await axios.get("http://localhost:1337/api/categories");
+  const data = await axios.get(`${baseUrl}/api/categories`);
   const categoriesData = data["data"]["data"];
   let paramsArray: any = [];
   for (let i = 0; i < categoriesData?.length; i++) {
@@ -109,7 +110,7 @@ export const getCategoriesNames = async () => {
       }
     );
     const categoryViseProducts = await axios.get(
-      `http://localhost:1337/api/products?${query}`
+      `${baseUrl}/api/products?${query}`
     );
     const params = categoryViseProducts["data"]["data"]?.map((product: any) => {
       paramsArray.push({
@@ -157,10 +158,10 @@ export async function getStaticProps({ params }: any) {
     }
   );
   const ProductData = await axios.get(
-    `http://localhost:1337/api/products?${query}`
+    `${baseUrl}/api/products?${query}`
   );
   const ReviewData = await axios.get(
-    `http://localhost:1337/api/reviews?${reviewQuery}`
+    `${baseUrl}/api/reviews?${reviewQuery}`
   );
   // console.log("product data is ,", ProductData["data"]["data"][0]);
   console.log("Review data is ,", ReviewData["data"]["data"]);

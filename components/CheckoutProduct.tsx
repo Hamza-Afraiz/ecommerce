@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
+import { baseUrl } from "../constants/baseUrl";
 import laptopPic from "../public/laptop.png";
 import styles from "../styles/Checkout.module.css";
 const { Meta } = Card;
@@ -22,7 +23,7 @@ const CheckoutProduct = ({ title, description, imageUrl, id }: ProductType) => {
   const router = useRouter();
 
   const AddProductToCart = async () => {
-    const isPosted = await axios.post("http://localhost:1337/api/carts", {
+    const isPosted = await axios.post(`${baseUrl}/api/carts`, {
       data: {
         quantity: productCount,
         product: {
@@ -57,7 +58,7 @@ const CheckoutProduct = ({ title, description, imageUrl, id }: ProductType) => {
         cover={
           <Image
             alt="example"
-            src={imageUrl ? `http://localhost:1337${imageUrl}` : laptopPic}
+            src={imageUrl ? `${baseUrl}${imageUrl}` : laptopPic}
             width={400}
             height={200}
           />

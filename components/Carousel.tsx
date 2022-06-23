@@ -4,6 +4,7 @@ import styles from "../styles/ProductImagesCarousel.module.css";
 import { Carousel } from "antd";
 import Image from "next/image";
 import laptopPic from "../public/laptop.png";
+import { baseUrl } from "../constants/baseUrl";
 
 const ProductImagesCarousel = ({ productImages }: any) => {
   console.log("product images are ", productImages);
@@ -20,7 +21,7 @@ const ProductImagesCarousel = ({ productImages }: any) => {
           <div key={index}>
             <Image
               alt="example"
-              src={imageUrl ? `http://localhost:1337${imageUrl}` : laptopPic}
+              src={imageUrl ? `${baseUrl}${imageUrl}` : laptopPic}
               width={1000}
               height={400}
             />

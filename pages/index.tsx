@@ -6,7 +6,7 @@ import styles from "../styles/Home.module.css";
 import type { AppProps } from "next/app";
 import Category from "../components/Category";
 import Product from "../components/Product";
-
+import { baseUrl } from "../constants/baseUrl";
 const Home: NextPage = ({ categoriesData, productsData }: any) => {
   console.log("categoriesData are", categoriesData);
   return (
@@ -48,10 +48,10 @@ export default Home;
 export async function getStaticProps() {
   // Get external data from the file system, API, DB, etc.
   const categoriesData = await axios.get(
-    `http://localhost:1337/api/categories?populate=*`
+    `${baseUrl}/api/categories?populate=*`
   );
   const productsData = await axios.get(
-    `http://localhost:1337/api/products?populate=*`
+    `${baseUrl}/api/products?populate=*`
   );
   console.log("Data i s", productsData);
   // The value of the `categoriesData` key will be

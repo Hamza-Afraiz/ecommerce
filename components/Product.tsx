@@ -11,6 +11,7 @@ import Image from "next/image";
 import laptopPic from "../public/laptop.png";
 import Link from "next/link";
 import { useRouter } from 'next/router'
+import { baseUrl } from "../constants/baseUrl";
 type ProductType = {
   title: string;
   description: string;
@@ -28,7 +29,7 @@ const Product = ({ title, description,imageUrl }: ProductType) => {
         padding: 10,
         boxShadow: "0 3px 10px rgb(0 0 0 / 0.2)",
       }}
-      cover={<Image alt="example" src={ imageUrl?`http://localhost:1337${imageUrl}`:laptopPic }  width={400} height={200}/>}
+      cover={<Image alt="example" src={ imageUrl?`${baseUrl}${imageUrl}`:laptopPic }  width={400} height={200}/>}
     >
       <Meta
         avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
