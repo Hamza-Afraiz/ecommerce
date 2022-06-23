@@ -1,0 +1,22 @@
+.cartContainer {
+  width: 80%;
+  margin-top: 10%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.cartActions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.listItem {
+  background-color: #ffffff;
+  box-shadow: 7px 7px 10px 10px rgb(0 0 0 / 0.2);
+  border-radius: 12px;
+  margin-bottom: 3%;
+}
+.iconStyle {
+  color: blue;
+  margin: 20px;
+  cursor: pointer;
+}
