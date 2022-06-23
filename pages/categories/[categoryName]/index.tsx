@@ -16,7 +16,7 @@ const Index = ({ categoryViseProducts }: any) => {
     <div className="main">
       <Head>
         <title>{router.query.categoryName}</title>
-        <meta name="description" content={router["query"]["categoryName"]} />
+        <meta name="description" content="Cart" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>Products </h1>
