@@ -11,8 +11,8 @@ const Home: NextPage = ({ categoriesData, productsData }: any) => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Accessories in Islamabad</title>
-        <meta name="description" content="Accessories in Islamabad" />
+        <title>Accessories at one place</title>
+        <meta name="description" content="Accessories at one place" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
